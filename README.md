@@ -58,3 +58,5 @@ The data folder contains the following subfolders:
 * processed: chunks of several chunking experiments in .json format
 
 This folder structure is inspired in: [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/)
+
+[Doing RAG on PDFs using File Search in the Responses API](https://cookbook.openai.com/examples/file_search_responses)

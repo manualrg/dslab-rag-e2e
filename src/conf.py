@@ -39,10 +39,17 @@ def example():
 
 
 class Settings(BaseSettings):
-    param1: int
+    llm_workhorse: str
+    llm_flagship: str
+    embeddings: str
+    embeddings_dim: int
+    vdb_index: str
+    retrieve_k: int
+    name_dense: str
+    name_sparse: str
 
 class Infra(BaseSettings):
-    param1: int
+    vdb_url: str
 
 
 class ConfigFiles(Enum):

@@ -1,1 +1,10 @@
-param1: 1
+llm_workhorse: gpt-5-mini-2025-08-07
+llm_flagship: gpt-5-2025-08-07
+embeddings: text-embedding-3-small
+embeddings_dim: 1536
+vdb_index: space
+retrieve_k: 3
+name_dense: dense
+name_sparse: sparse
+
+  

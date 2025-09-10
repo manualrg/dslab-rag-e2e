@@ -47,6 +47,7 @@ class Settings(BaseSettings):
     retrieve_k: int
     name_dense: str
     name_sparse: str
+    model_sparse: str
 
 class Infra(BaseSettings):
     vdb_url: str

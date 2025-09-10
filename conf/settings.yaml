@@ -6,5 +6,4 @@ vdb_index: space
 retrieve_k: 3
 name_dense: dense
 name_sparse: sparse
-
-  
+model_sparse: "Qdrant/bm25"

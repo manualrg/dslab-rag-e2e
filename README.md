@@ -50,3 +50,41 @@ The data folder contains the following subfolders:
 This folder structure is inspired in: [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/)
 
 [Doing RAG on PDFs using File Search in the Responses API](https://cookbook.openai.com/examples/file_search_responses)
+
+# Scripts
+
+**load_docs.py**
+Scans a given path to ingest .md files into a VDB. It requieres access to:
+* An embeddings model
+* A VDB where the given documents are not present
+```bash
+uv run .\load_docs.py --index-name space
+```
+
+
+**rag.py**
+Is both a script and a module with a RAG for basic QA. It requieres access to:
+* A LLM
+* An embeddings model
+* A populated VDB
+```bash
+uv run .\rag.py --index-name space --retrieve-k 3
+```
+
+**evaluate.py**
+Run a evaluation of a rag agent given a dataset
+* A LLM
+* An embeddings model
+* A populated VDB
+* a LLMOps service
+```bash
+uv run .\rag.py --index-name space --retrieve-k 3 --data-dir
+```
+
+
+# Apps
+**app.py**
+Is a basic conversational interface built on `streamlit`. Get's the rag from rag.py
+```bash
+uv run streamlit run app.py
+```

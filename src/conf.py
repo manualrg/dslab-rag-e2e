@@ -51,6 +51,7 @@ class Settings(BaseSettings):
 
 class Infra(BaseSettings):
     vdb_url: str
+    llmops_url: str
 
 
 class ConfigFiles(Enum):

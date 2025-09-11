@@ -98,7 +98,6 @@ def main(
     
     LLM_WORKHORSE = conf_settings.llm_workhorse
     EMBEDDINGS = conf_settings.embeddings
-    EMB_DIM = conf_settings.embeddings_dim  
     VDB_URL = conf_infra.vdb_url
 
     logger.info("Loaded Configuration")

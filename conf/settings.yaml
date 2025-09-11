@@ -1,5 +1,5 @@
-llm_workhorse: gpt-5-mini-2025-08-07
-llm_flagship: gpt-5-2025-08-07
+llm_workhorse: gpt-4.1-mini-2025-04-14
+llm_flagship: gpt-4.1-2025-04-14
 embeddings: text-embedding-3-small
 embeddings_dim: 1536
 vdb_index: space

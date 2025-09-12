@@ -1,4 +1,6 @@
-
+"""
+from .md files from input-dir to the VBD index `index-name`
+"""
 import os
 import sys
 import uuid
@@ -129,7 +131,6 @@ def main(
         logger.error("Failed to load conf files: %s", e)
         sys.exit(2)
     
-
     EMBEDDINGS = conf_settings.embeddings
     EMB_DIM = conf_settings.embeddings_dim  
     VDB_URL = conf_infra.vdb_url

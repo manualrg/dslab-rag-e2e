@@ -71,16 +71,6 @@ Is both a script and a module with a RAG for basic QA. It requieres access to:
 uv run .\rag.py --index-name space --retrieve-k 3
 ```
 
-**evaluate.py**
-Run a evaluation of a rag agent given a dataset
-* A LLM
-* An embeddings model
-* A populated VDB
-* a LLMOps service
-```bash
-uv run .\rag.py --index-name space --retrieve-k 3 --data-dir
-```
-
 
 # Apps
 **app.py**

@@ -57,7 +57,7 @@ def create_folders():
     path_data_processed.mkdir(parents=True, exist_ok=True)
 
 
-
+# UTILS
 def corpus_stats(encoding, corpus: List[Document]) -> pd.Series:
     lst_docs = [encoding.encode(doc.page_content) for doc in corpus]
     data = [len(x) for x in lst_docs]

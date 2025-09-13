@@ -37,7 +37,6 @@ def example():
     logger.info("conf.example")
     print("conf.example")
 
-
 class Settings(BaseSettings):
     llm_workhorse: str
     llm_flagship: str

@@ -73,8 +73,28 @@ uv run .\rag.py --index-name space --retrieve-k 3
 
 
 # Apps
+
+**backend.py**
+Basic chatbot backend
+```bash
+uv run uvicorn backend:app --reload
+```
+Go to http://localhost:8000/docs in your browser and check the swagger
+
+
 **app.py**
 Is a basic conversational interface built on `streamlit`. Get's the rag from rag.py
 ```bash
 uv run streamlit run app.py
 ```
+Go to http://localhost:8501/ in your browser
+
+
+
+# Misc
+**Get QA from a file**
+I am giving you a document and you have to generate a set of 30 questions from the following dataset with the goal of evaluate a rag application. The questions must be classified by difficulty as: easy (direct answer from a single piece of text) medium hard 
+Mimic the logic of the user regarding that edocument Return the questions in a csv format with the following columns: question, answer, difficulty, source, cite 
+where the columns: 
+source: is the section of the text where it appears 
+cite: extract some literal text regarding the concepts used in the answer

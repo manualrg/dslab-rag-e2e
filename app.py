@@ -1,10 +1,19 @@
 import streamlit as st
+import requests
 
-from rag import main as rag_agent_builder
+from src import conf
 
 
-index_name="space"
-retrieve_k=3
+# Configuration
+API_URL = "http://127.0.0.1:8000/"
+try:
+    conf_settings = conf.load(file="settings.yaml")
+    index_name = conf_settings.vdb_index
+    retrieve_k = conf_settings.retrieve_k
+except Exception as e:
+    index_name = "space"
+    retrieve_k = 3
+
 
 def save_feedback(index):
     st.session_state.messages[index]["feedback"] = st.session_state[f"feedback_{index}"]
@@ -29,21 +38,17 @@ if "messages" not in st.session_state:
     st.session_state.messages = []
 
 
+# --- Instanciate RAG in monolithic set ups
+# from rag import main as rag_agent_builder
+# @st.cache_resource 
+# def load_agent():
+#     rag_graph = rag_agent_builder(
+#             index_name=index_name,
+#             retrieve_k=retrieve_k,
+#         )
+#     return rag_graph
 
-
-
-# --- Instanciate RAG
-
-from rag import main as rag_agent_builder
-@st.cache_resource 
-def load_agent():
-    rag_graph = rag_agent_builder(
-            index_name=index_name,
-            retrieve_k=retrieve_k,
-        )
-    return rag_graph
-
-rag_graph = load_agent()
+# rag_graph = load_agent()
 
 
 # --- Display chat history
@@ -71,9 +76,14 @@ if prompt := st.chat_input("Ask a question about your knowledge base…"):
     st.chat_message("user").write(prompt)
 
     # Generate reply
-    resp = rag_graph.invoke({"question": prompt})
-    reply = resp['answer']
-    ctx = resp['context']
+    payload = {
+        "message": prompt
+    }
+
+    resp = requests.post(API_URL + "chat/", json=payload)
+
+    reply = resp.json()['response'] # str
+    ctx = resp.json()['context'] # List[str]
 
     # Save and show reply
     st.session_state.messages.append({"role": "assistant", "content": reply})
@@ -81,6 +91,6 @@ if prompt := st.chat_input("Ask a question about your knowledge base…"):
     if ctx:
         with st.expander(f"Context ({len(ctx)})"):
             for i, doc in enumerate(ctx, 1):
-                snippet = doc.page_content[:600]
+                snippet = doc[:600]
                 st.markdown(f"**Chunk: {i}**")
-                st.write(snippet + ("…" if len(doc.page_content) > 600 else ""))
+                st.write(snippet + ("…" if len(doc) > 600 else ""))

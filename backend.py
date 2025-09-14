@@ -49,9 +49,6 @@ def chat(input_message: MessageInput):
     message = input_message.message.lower().strip()
     
     resp = rag_graph.invoke({"question": message})
-
-    question = "¿A qué distancia de la Tierra está el sistema Althéra?"
-    resp = rag_graph.invoke({"question": question})
     
     context = resp['context']
     answer = resp['answer']

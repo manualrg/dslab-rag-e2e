@@ -91,6 +91,6 @@ if prompt := st.chat_input("Ask a question about your knowledge base…"):
     if ctx:
         with st.expander(f"Context ({len(ctx)})"):
             for i, doc in enumerate(ctx, 1):
-                snippet = doc[:600]
+                snippet = doc[:200]
                 st.markdown(f"**Chunk: {i}**")
-                st.write(snippet + ("…" if len(doc) > 600 else ""))
+                st.write(snippet + ("…" if len(doc) > 200 else ""))

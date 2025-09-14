@@ -38,6 +38,7 @@ def discover_markdown_files(input_dir: Path) -> List[Path]:
         logger.warning("No .md files found in %s. Nothing to ingest.", input_dir)
     return files
 
+
 def load_markdown(path: Path) -> str:
     try:
         text = path.read_text(encoding="utf-8")
@@ -171,13 +172,13 @@ def main(
 
 
     # Prepare data
-    docs = mk_docs_from_files(files)
+    docs = mk_docs_from_files(files)  #List[Documents] -> File
     splits = split_markdown_docs(
         docs=docs,
         headers_to_split_on=headers_to_split_on,
         chunk_size=chunk_size,
         chunk_overlap=chunk_overlap,
-    )
+    )   #List[Documents] -> Chunk
 
     if not splits:
         logger.warning("No chunks produced; exiting.")
@@ -197,7 +198,7 @@ def main(
         collection_name=index_name,
         url=VDB_URL,
         api_key=QDRANT_API_KEY
-    )
+    )  # Optional, can use vdb client directly
 
     uuids = [str(uuid.uuid4()) for _ in range(len(splits))]
     vector_store.add_documents(documents=splits, ids=uuids)

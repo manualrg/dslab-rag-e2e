@@ -55,6 +55,7 @@ def build_rag(
 
 
     g = StateGraph(State)
+    # Use partial to create an argument-populated version of node funtcions
     g.add_node("retrieve", partial(retrieve, vector_store=vector_store, retrieve_k=retrieve_k))
     g.add_node("generate", partial(generate, llm=llm, prompt=prompt))
 
@@ -127,7 +128,7 @@ def main(
         collection_name=index_name,
         url=VDB_URL,
         api_key=QDRANT_API_KEY,
-    )
+    )  # Optional, could use native client implementation
     try:
         _ = vector_store.asimilarity_search("healthcheck")
         logger.info("Qdrant search healthcheck OK")

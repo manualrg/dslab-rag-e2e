@@ -59,9 +59,9 @@ Scans a given path to ingest .md files into a VDB. It requieres access to:
 * An embeddings model
 * A VDB where the given documents are not present
 ```bash
-uv run .\load_docs.py --index-name space
+python .\load_docs.py --index-name space
 ```
-
+IMPORTANT: Running the script several times with the same file, will generate duplicate entries!!!
 
 **rag.py**
 Is both a script and a module with a RAG for basic QA. It requieres access to:
@@ -69,7 +69,7 @@ Is both a script and a module with a RAG for basic QA. It requieres access to:
 * An embeddings model
 * A populated VDB
 ```bash
-uv run .\rag.py --index-name space --retrieve-k 3
+python .\rag.py --index-name space --retrieve-k 3
 ```
 
 
@@ -78,7 +78,7 @@ uv run .\rag.py --index-name space --retrieve-k 3
 **backend.py**
 Basic chatbot backend
 ```bash
-uv run uvicorn backend:app --reload
+uvicorn backend:app --reload
 ```
 Go to http://localhost:8000/docs in your browser and check the swagger
 
@@ -86,7 +86,7 @@ Go to http://localhost:8000/docs in your browser and check the swagger
 **app.py**
 Is a basic conversational interface built on `streamlit`. Get's the rag from rag.py
 ```bash
-uv run streamlit run app.py
+streamlit run app.py
 ```
 Go to http://localhost:8501/ in your browser
 

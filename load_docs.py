@@ -11,7 +11,7 @@ from typing import Iterable, List, Tuple
 
 from dotenv import load_dotenv
 from langchain_text_splitters import MarkdownHeaderTextSplitter, RecursiveCharacterTextSplitter
-from langchain.schema import Document
+from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings
 from langchain_qdrant import QdrantVectorStore
 from qdrant_client import QdrantClient
@@ -205,7 +205,7 @@ def main(
     logger.info("Completed. Total chunks upserted: %d", len(splits))
 
     try:
-        _ = vector_store.asimilarity_search("healthcheck")
+        _ = vector_store.similarity_search("healthcheck")
         logger.info("Qdrant search healthcheck OK")
     except Exception as err:
         logger.error("Qdrant search failed: %s", err)

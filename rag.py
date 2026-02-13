@@ -6,7 +6,7 @@ from typing import List, TypedDict
 from functools import partial
 from dotenv import load_dotenv
 
-from langchain.schema import Document
+from langchain_core.documents import Document
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_qdrant import QdrantVectorStore
 from langchain_core.prompts import ChatPromptTemplate

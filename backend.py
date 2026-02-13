@@ -23,12 +23,14 @@ rag_graph = rag_builder(
 
 app = FastAPI(
     title="Simple Chatbot API",
-    description="A basic API for a rule-based chatbot."
+    description="A basic API for QA chatbot."
 )
 
 # Data model
 class MessageInput(BaseModel):
     message: str
+    # user?
+    # topic?
 
 class ChatResponse(BaseModel):
     response: str

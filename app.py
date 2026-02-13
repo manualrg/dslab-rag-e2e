@@ -86,7 +86,7 @@ if prompt := st.chat_input("Ask a question about your knowledge base…"):
     ctx = resp.json()['context'] # List[str]
     
 
-    # Save and show reply
+    # Show and store reply
     st.session_state.messages.append({"role": "assistant", "content": reply})
     st.chat_message("assistant").write(reply)
     if ctx:

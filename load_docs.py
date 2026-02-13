@@ -25,8 +25,8 @@ logger = logging.getLogger(__name__)
 # Constants
 headers_to_split_on = [
     ("#", "Header 1"),
-    ("##", "Header 2"),
-    ("###", "Header 3"),
+    # ("##", "Header 2"),
+    # ("###", "Header 3"),
 ]
 
 

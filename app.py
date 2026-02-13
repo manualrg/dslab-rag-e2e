@@ -81,9 +81,10 @@ if prompt := st.chat_input("Ask a question about your knowledge base…"):
     }
 
     resp = requests.post(API_URL + "chat/", json=payload)
-
+    #rag_graph.invoke(...)
     reply = resp.json()['response'] # str
     ctx = resp.json()['context'] # List[str]
+    
 
     # Save and show reply
     st.session_state.messages.append({"role": "assistant", "content": reply})

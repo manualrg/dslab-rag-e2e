@@ -2,27 +2,28 @@
 
 # Prerequisites
 
-(Optional, you may have installed uv in your main python installation)
-Install uv: [Installing uv](https://docs.astral.sh/uv/getting-started/installation/#pypi)
-
-Check uv installation:
+Create a virtual environment
 ```bash
-uv --help
+python -m venv .venv
 ```
-
-Create a uv project on the current project folder, given the project specification
-```bash
-uv sync
-```
-This will create a Virtual Environment called .venv
-
 
 Activate the Virtual Environment,
 following the specific instructions for your OS,
 for example, with Win/Powershell: `.\.venv\Scripts\activate`
 
-This will create a virtual environment in .venv folder and some files and install the dependencies especifed in uv project files: [Project structure and files](https://docs.astral.sh/uv/concepts/projects/layout/)
 
+Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+This virtual environment has been built using Win11 and Python 3.10.9, 3.11  and 3.12
+
+As project is based in notebooks, three popular approaches can be followed:
+* Install jupyter notebook: `pip install jupyter`
+* Install jupyterlab: `pip install jupyterlab`
+* Use VSCode notebooks extension: [Jupyter Notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks) 
+and install ipykernel with `pip install ipykernel`
 
 As project is based in notebooks, three popular approaches can be followed:
 * Install jupyter notebook: `uv add jupyter`
@@ -37,9 +38,9 @@ Create a `.env` file and populate the following environment variables:
 OPENAI_API_KEY=
 QDRANT_API_KEY=
 QDRANTL_URL=
-MISTRAL_API_KEY=
 ```
 
+Also, modify in `conf/infra.yaml` the `vdb_url` variable to point to your qdrant vector database 
 
 # Data Folder
 The data folder contains the following subfolders:
@@ -49,7 +50,7 @@ The data folder contains the following subfolders:
 
 This folder structure is inspired in: [Cookiecutter Data Science](https://cookiecutter-data-science.drivendata.org/)
 
-[Doing RAG on PDFs using File Search in the Responses API](https://cookbook.openai.com/examples/file_search_responses)
+
 
 # Scripts
 
@@ -88,7 +89,6 @@ Is a basic conversational interface built on `streamlit`. Get's the rag from rag
 uv run streamlit run app.py
 ```
 Go to http://localhost:8501/ in your browser
-
 
 
 # Misc

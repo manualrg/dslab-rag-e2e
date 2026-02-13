@@ -1,4 +1,4 @@
-from langchain.schema import Document
+from langchain_core.documents import Document
 
 
 uuids = ['2690cf82-ebfd-48bc-bd52-c61a595a212a',

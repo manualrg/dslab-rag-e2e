@@ -55,7 +55,9 @@ def build_rag(
 
 
     g = StateGraph(State)
+    # from functools import partial
     # Use partial to create an argument-populated version of node funtcions
+    # retrieve(state: State, vector_store, retrieve_k) -> retrieve(state: State)
     g.add_node("retrieve", partial(retrieve, vector_store=vector_store, retrieve_k=retrieve_k))
     g.add_node("generate", partial(generate, llm=llm, prompt=prompt))
 
